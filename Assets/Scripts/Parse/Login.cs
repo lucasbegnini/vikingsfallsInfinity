@@ -29,7 +29,6 @@ public class Login : MonoBehaviour {
             // Login was successful
             user = t.Result;
                 Debug.Log(user.Username);
-                user.DeleteAsync();
 //                string email;
 //                user.TryGetValue<string>("score", out email);
 //            Debug.Log(email );

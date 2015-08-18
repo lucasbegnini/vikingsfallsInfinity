@@ -22,7 +22,7 @@ public class CriarUsuarioParse : MonoBehaviour {
         };
 
         // other fields can be set just like with ParseObject
-        user["score"] = scoreInicial.ToString();
+        user["pontuacao"] = (int) scoreInicial;
 
         user.SignUpAsync().ContinueWith( t => {
             if (t.IsFaulted || t.IsCanceled)
