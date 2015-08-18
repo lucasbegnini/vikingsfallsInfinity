@@ -13,6 +13,7 @@ public class CriarUsuarioParse : MonoBehaviour {
 
     void CreateUser()
     {
+
         var user = new ParseUser()
         {
             Username = usuario,
@@ -23,7 +24,21 @@ public class CriarUsuarioParse : MonoBehaviour {
         // other fields can be set just like with ParseObject
         user["score"] = scoreInicial.ToString();
 
-        user.SignUpAsync();
+        user.SignUpAsync().ContinueWith( t => {
+            if (t.IsFaulted || t.IsCanceled)
+            {
+                Debug.Log("Login Fail");
+            }
+            else
+            {
+                // Login was successful
+               
+                Debug.Log(t.ToString());
+                //                string email;
+                //                user.TryGetValue<string>("score", out email);
+                //            Debug.Log(email );
+            }
+        }); 
         
         
 
