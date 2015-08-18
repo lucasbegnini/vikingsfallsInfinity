@@ -13,7 +13,7 @@ public class CriarUsuarioParse : MonoBehaviour {
 
     void CreateUser()
     {
-
+        ParseUser.LogOut();
         var user = new ParseUser()
         {
             Username = usuario,
@@ -27,7 +27,12 @@ public class CriarUsuarioParse : MonoBehaviour {
         user.SignUpAsync().ContinueWith( t => {
             if (t.IsFaulted || t.IsCanceled)
             {
-                Debug.Log("Login Fail");
+                foreach (var e in t.Exception.InnerExceptions)
+                {
+                    ParseException parseException = (ParseException)e;
+                    Debug.Log("Error message " + parseException.Message);
+                    Debug.Log("Error code: " + parseException.Code);
+                }
             }
             else
             {
