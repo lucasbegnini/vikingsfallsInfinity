@@ -36,12 +36,8 @@ public class CriarUsuarioParse : MonoBehaviour {
             }
             else
             {
-                // Login was successful
-               
-                Debug.Log(t.ToString());
-                //                string email;
-                //                user.TryGetValue<string>("score", out email);
-                //            Debug.Log(email );
+                //SignUpAsync() DONE
+                Debug.Log("Usuário criado com sucesso");
             }
         }); 
         
